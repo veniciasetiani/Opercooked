@@ -26,7 +26,8 @@ int main(){
         printf(">>");
         scanf ("%d", &inputMenu);
         for (int i = 0; i < 25; i++) puts("");
-        if (inputMenu == 1) addMenu();        
+        if (inputMenu == 1) addMenu();    
+        else if (inputMenu == 5) break;    
     }
 
     return 0;
