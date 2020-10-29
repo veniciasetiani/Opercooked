@@ -1,16 +1,20 @@
 #include <stdio.h>
 #include <string.h>
+
 int profit = 0;
-void addMenu();
-void addDesert();
 char menuName[100][255];
 int menuPrice[100];
 char topping[100][255];
 double calories[100];
 int currentMenu = 0;
 char typeMenu[100][255];
+
+void addMenu();
+void addDesert();
+
 int main(){
 
+    // Main Menu
     while(1)
     {
         for (int i = 0; i < 25; i++) puts("");        
@@ -26,7 +30,7 @@ int main(){
         printf(">>");
         scanf ("%d", &inputMenu);
         for (int i = 0; i < 25; i++) puts("");
-        if (inputMenu == 1) addMenu();    
+        if (inputMenu == 1) addMenu();
         else if (inputMenu == 5) break;    
     }
 
@@ -35,6 +39,7 @@ int main(){
 
 void addMenu(){
 
+    //pilih mau nambah dessert ato drink
     while(1)
     {
         puts ("What do you want to add?");
@@ -55,6 +60,8 @@ void addDesert(){
     char namaMenu[255], toppingMenu[255];
     int price;
     double calorie;
+
+    //input nama dessert
     while(1)
     {
     printf ("Input the name [at least 5 characters]: ");
@@ -63,6 +70,7 @@ void addDesert(){
     }
     strcpy(menuName[currentMenu], namaMenu);
 
+    //input harga
     while(1)
     {
         printf ("Input the price [10 - 500]: ");
@@ -71,6 +79,7 @@ void addDesert(){
     }
     menuPrice[currentMenu] = price;
 
+    //input topping (belum bisa gw validasinya)
     while(1)
     {
         printf ("Input the topping ['Caramel' | 'Honey' | 'Syrup'](Case Insensitive): ");
@@ -79,6 +88,7 @@ void addDesert(){
     }
     strcpy(topping[currentMenu], toppingMenu);
 
+    //input kalori
     while(1)
     {
         printf ("Insert calories [1.00 - 99.00]: ");
