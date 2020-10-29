@@ -8,6 +8,7 @@ int menuPrice[100];
 char topping[100][255];
 double calories[100];
 int currentMenu = 0;
+char typeMenu[100][255];
 int main(){
 
     while(1)
@@ -49,6 +50,7 @@ void addMenu(){
 }
 
 void addDesert(){
+    strcpy(typeMenu[currentMenu], "Dessert");
     char namaMenu[255], toppingMenu[255];
     int price;
     double calorie;
