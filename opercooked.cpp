@@ -6,11 +6,14 @@ char menuName[100][255];
 int menuPrice[100];
 char topping[100][255];
 double calories[100];
-int currentMenu = 0;
+int currentMenu = 1;
 char typeMenu[100][255];
+char menuSize[100];
+char menuFlavor[100][50];
 
 void addMenu();
 void addDesert();
+void order();
 
 int main(){
 
@@ -28,9 +31,10 @@ int main(){
         puts("5. Exit");
         int inputMenu;
         printf(">> ");
-        scanf ("%d", &inputMenu);
+        scanf ("%d", &inputMenu); getchar();
         for (int i = 0; i < 50; i++) puts("");
         if (inputMenu == 1) addMenu();
+        else if (inputMenu == 4) order();
         else if (inputMenu == 5) break;    
     }
 
@@ -79,7 +83,7 @@ void addDesert(){
     }
     menuPrice[currentMenu] = price;
 
-    //input topping (belum bisa gw validasinya)
+    //input topping
     while(1)
     {
         printf ("Input the topping ['Caramel' | 'Honey' | 'Syrup'](Case Insensitive): ");
@@ -104,4 +108,40 @@ void addDesert(){
     printf("Successfully added a new menu!");
     getchar();
     currentMenu++;
+}
+
+void order(){
+    for (int i = 1; i < 100; i++)
+    {
+        if (strlen(menuName[1]) == 0)
+        {
+            puts("There is no Dessert or Drink on the list!");
+            printf ("\nPress Enter to continue");
+            getchar();
+            break;
+        }
+        else if (strlen(menuName[i]))
+        {
+            printf ("| %-5s| %-20s| %-7s| %-12s| %-11s| %-11s| %-6s|\n","No", "Name", "Price", "Topping", "Callories", "Flavor", "size");
+            puts ("---------------------------------------------------------------------------------------");
+            //kalau dia dessert
+            if (strcmp(typeMenu[i], "Dessert") == 0)
+            {
+            printf ("| %-5d| %-20s| %-7d| %-12s| %-11.2lf| %-11s| %-6s|\n", i, menuName[i], menuPrice[i], topping[i], calories[i], "-", "-");
+            }
+            //kalau dia drink
+            if (strcmp(typeMenu[i], "Drink") == 0)
+            {
+            printf ("| %-5d| %-20s| %-7d| %-12s| %-11.2lf| %-11s| %-6s|\n", i, menuName[i], menuPrice[i], topping[i], calories[i], menuFlavor[i], menuSize[i]);
+            }
+            printf ("Choose a menu to order [1 - %d]: ", currentMenu - 1);
+            int input;
+            scanf ("%d", &input); getchar();
+            printf("\nSuccessfully add to order list!\n");
+            printf ("Press Enter to continue"); getchar();
+        }
+        
+
+    break;
+    }
 }
