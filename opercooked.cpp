@@ -111,20 +111,21 @@ void addDesert(){
 }
 
 void order(){
-    for (int i = 1; i < 100; i++)
-    {
+    
         if (strlen(menuName[1]) == 0)
         {
             puts("There is no Dessert or Drink on the list!");
             printf ("\nPress Enter to continue");
             getchar();
-            break;
         }
-        else if (strlen(menuName[i]))
+        else if (strlen(menuName[1]))
         {
             printf ("| %-5s| %-20s| %-7s| %-12s| %-11s| %-11s| %-6s|\n","No", "Name", "Price", "Topping", "Callories", "Flavor", "size");
             puts ("---------------------------------------------------------------------------------------");
             //kalau dia dessert
+            for (int i = 1; i < 100; i++)
+            {
+
             if (strcmp(typeMenu[i], "Dessert") == 0)
             {
             printf ("| %-5d| %-20s| %-7d| %-12s| %-11.2lf| %-11s| %-6s|\n", i, menuName[i], menuPrice[i], topping[i], calories[i], "-", "-");
@@ -134,14 +135,12 @@ void order(){
             {
             printf ("| %-5d| %-20s| %-7d| %-12s| %-11.2lf| %-11s| %-6s|\n", i, menuName[i], menuPrice[i], topping[i], calories[i], menuFlavor[i], menuSize[i]);
             }
+            }
             printf ("Choose a menu to order [1 - %d]: ", currentMenu - 1);
             int input;
             scanf ("%d", &input); getchar();
             printf("\nSuccessfully add to order list!\n");
             printf ("Press Enter to continue"); getchar();
         }
-        
-
-    break;
-    }
+    
 }
