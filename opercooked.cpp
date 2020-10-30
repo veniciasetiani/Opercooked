@@ -132,7 +132,7 @@ void order(){
                 //kalau dia drink
                 if (strcmp(typeMenu[i], "Drink") == 0)
                 {
-                    printf ("| %-5d| %-20s| %-7d| %-12s| %-11.2lf| %-11s| %-6s|\n", i, menuName[i], menuPrice[i], topping[i], calories[i], menuFlavor[i], menuSize[i]);
+                    printf ("| %-5d| %-20s| %-7d| %-12s| %-11.2lf| %-11s| %-6s|\n", i, menuName[i], menuPrice[i], "-", "-", menuFlavor[i], menuSize[i]);
                 }
             }
             
