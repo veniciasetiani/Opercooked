@@ -17,7 +17,7 @@ int main(){
     // Main Menu
     while(1)
     {
-        for (int i = 0; i < 25; i++) puts("");        
+        for (int i = 0; i < 50; i++) puts("");        
         puts("Welcome to Opercooked");
         printf("Today Profit: $ %d\n", profit);
         puts("========================");
@@ -27,9 +27,9 @@ int main(){
         puts("4. Order Dessert or Beverage");
         puts("5. Exit");
         int inputMenu;
-        printf(">>");
+        printf(">> ");
         scanf ("%d", &inputMenu);
-        for (int i = 0; i < 25; i++) puts("");
+        for (int i = 0; i < 50; i++) puts("");
         if (inputMenu == 1) addMenu();
         else if (inputMenu == 5) break;    
     }
@@ -49,7 +49,7 @@ void addMenu(){
         int choose;
         scanf ("%d", &choose); getchar();
         if (choose == 1) addDesert(); break;
-        for (int i = 0; i < 25; i++) puts("");        
+        for (int i = 0; i < 50; i++) puts("");        
     }
 
 
@@ -73,7 +73,7 @@ void addDesert(){
     //input harga
     while(1)
     {
-        printf ("Input the price [10 - 500]: ");
+        printf ("Input the price [10 - 500]: "); 
         scanf ("%d", &price); getchar();
         if (price >= 10 && price <= 500) break;
     }
@@ -84,7 +84,12 @@ void addDesert(){
     {
         printf ("Input the topping ['Caramel' | 'Honey' | 'Syrup'](Case Insensitive): ");
         scanf ("%s", toppingMenu); getchar();
-        if(toppingMenu) break;
+        if (toppingMenu[0] > 'Z') toppingMenu[0] -= 32;
+        for (int i = 1; i < strlen(toppingMenu); i++)
+        {
+            if (toppingMenu[i] < 'a') toppingMenu[i] += 32;
+        }
+        if (strcmp("Caramel", toppingMenu) == 0 || strcmp("Honey", toppingMenu) == 0 || strcmp("Syrup", toppingMenu) == 0) break;
     }
     strcpy(topping[currentMenu], toppingMenu);
 
