@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
+
+char menuName[100][255];
+int menuPrice[100];
+int currentMenu = 1;
+char typeMenu[100][255];
 char menuSize[100][2];
+char menuFlavor[100][50];
 
 void addDrink();
 
