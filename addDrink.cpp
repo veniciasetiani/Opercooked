@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <stdlib.h>
 
 char menuName[100][255];
 int menuPrice[100];
@@ -8,6 +8,7 @@ int currentMenu = 1;
 char typeMenu[100][255];
 char menuSize[100][2];
 char menuFlavor[100][50];
+int drinkTime[100];
 
 void addDrink();
 
@@ -57,8 +58,20 @@ void addDrink(){
         if (strcmp("S", size) == 0 || strcmp("M", size) == 0 || strcmp("L", size)==0) break;
     }
     strcpy(menuSize[currentMenu], size);
+
+    int totalTime = (rand() % 41) + 10;
+    if (strcmp(toppingDrink, "Mint") == 0){
+        totalTime+=10;
+    }
+    else if(strcmp(toppingDrink, "Mix Berry") == 0){
+        totalTime+=20;
+    }
+    else if(strcmp(toppingDrink, "Cheese") == 0){
+        totalTime+=30;
+    }
+    drinkTime[currentMenu]=totalTime;
+
     printf("Successfully added a new menu!");
     getchar();
     currentMenu++;
 }
-
